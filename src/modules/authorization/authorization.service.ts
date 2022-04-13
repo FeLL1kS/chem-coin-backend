@@ -1,7 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import axios, { AxiosResponse } from 'axios';
-import { JSDOM } from 'jsdom';
-import { UsersService } from '../users/users.service';
+import { UsersService } from '../users/user.service';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { UserDto } from '../users/dto/user.dto';
@@ -57,7 +55,6 @@ export class AuthorizationService {
   }
 
   private async generateToken(user: UserDto) {
-    console.log(user);
     const token = await this.jwtService.signAsync(user);
     return token;
   }

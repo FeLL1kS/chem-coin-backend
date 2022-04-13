@@ -7,4 +7,5 @@ export enum Environment {
 export enum Providers {
   SEQUELIZE = 'SEQUELIZE',
   USER_REPOSITORY = 'USER_REPOSITORY',
+  TASK_REPOSITORY = 'TASK_REPOSITORY',
 }

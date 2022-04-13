@@ -1,10 +1,16 @@
-import { UserDto } from 'src/modules/users/dto/user.dto';
+import { IsNotEmpty } from 'class-validator';
 
 export class TaskDto {
-  readonly id: string;
+  @IsNotEmpty()
   readonly title: string;
+
+  @IsNotEmpty()
   readonly description: string;
+
+  @IsNotEmpty()
   readonly price: number;
-  readonly isAssigned: boolean;
-  readonly performer: UserDto | null;
+
+  readonly createdByUserId: string;
+
+  readonly assignedUserID: string | null;
 }

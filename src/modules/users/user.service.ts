@@ -7,7 +7,7 @@ import { Providers } from 'src/core/constants';
 export class UsersService {
   constructor(
     @Inject(Providers.USER_REPOSITORY)
-    private readonly userRepository: typeof User,
+    private userRepository: typeof User,
   ) {}
 
   async create(user: UserDto): Promise<User> {

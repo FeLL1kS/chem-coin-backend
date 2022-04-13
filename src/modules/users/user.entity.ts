@@ -1,7 +1,16 @@
-import { Table, Model, Column, DataType } from 'sequelize-typescript';
+import { Table, Model, Column, DataType, HasMany } from 'sequelize-typescript';
+import { Task } from '../tasks/task.entity';
 
 @Table
 export class User extends Model<User> {
+  @Column({
+    type: DataType.UUID,
+    defaultValue: DataType.UUIDV4,
+    primaryKey: true,
+    unique: true,
+  })
+  id: string;
+
   @Column({
     type: DataType.STRING,
     allowNull: false,
@@ -39,4 +48,7 @@ export class User extends Model<User> {
     allowNull: false,
   })
   password: string;
+
+  @HasMany(() => Task)
+  task: Task[];
 }

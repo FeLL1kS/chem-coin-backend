@@ -7,7 +7,7 @@ import {
 import axios, { AxiosResponse } from 'axios';
 import { JSDOM } from 'jsdom';
 import { Observable } from 'rxjs';
-import { UsersService } from '../../modules/users/users.service';
+import { UsersService } from '../../modules/users/user.service';
 
 @Injectable()
 export class DoesStudNumberValid implements CanActivate {

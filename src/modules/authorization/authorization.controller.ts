@@ -19,7 +19,7 @@ export class AuthorizationController {
 
   @UseGuards(AuthGuard('local'))
   @Post('login')
-  async login(@Request() req) {
+  async login(@Request() req: { user: UserDto }) {
     return await this.authorizationService.login(req.user);
   }
 
