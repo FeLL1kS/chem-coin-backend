@@ -1,5 +1,14 @@
-import { Table, Model, Column, DataType, HasMany } from 'sequelize-typescript';
-import { Task } from '../tasks/task.entity';
+import {
+  Table,
+  Model,
+  Column,
+  DataType,
+  HasMany,
+  BelongsToMany,
+} from 'sequelize-typescript';
+import { Task } from 'src/modules/tasks/task.entity';
+import { Role } from './role.entity';
+import { UserRole } from './userRole.entity';
 
 @Table
 export class User extends Model<User> {
@@ -51,4 +60,7 @@ export class User extends Model<User> {
 
   @HasMany(() => Task)
   task: Task[];
+
+  @BelongsToMany(() => Role, () => UserRole)
+  roles: Role[];
 }
