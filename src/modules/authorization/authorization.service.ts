@@ -44,6 +44,10 @@ export class AuthorizationService {
     return { user: result, token };
   }
 
+  public async findAllUserRoles(userId: string) {
+    return await this.usersService.findAllUserRoles(userId);
+  }
+
   private async comparePassword(password: string, dbPassword: string) {
     const match = await bcrypt.compare(password, dbPassword);
     return match;

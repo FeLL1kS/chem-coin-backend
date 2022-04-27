@@ -5,6 +5,7 @@ import {
   Param,
   Post,
   UseGuards,
+  Patch,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { TaskService } from './task.service';
@@ -30,5 +31,11 @@ export class TaskController {
       createdByUserId: req.user.id,
       ...req.body,
     });
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Patch()
+  async assignUser(@Request() req, @Param('taskId') taskId: string) {
+    return await this.taskService.assignUser(taskId, req.user.id);
   }
 }

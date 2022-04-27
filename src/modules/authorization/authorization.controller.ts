@@ -2,7 +2,6 @@ import {
   Controller,
   Get,
   Post,
-  Query,
   UseGuards,
   Body,
   Request,
@@ -27,5 +26,11 @@ export class AuthorizationController {
   @Post('signup')
   async signup(@Body() user: UserDto) {
     return await this.authorizationService.create(user);
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Get('roles')
+  async findAllUserRoles(@Request() req) {
+    return await this.authorizationService.findAllUserRoles(req.user.id);
   }
 }

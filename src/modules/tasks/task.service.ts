@@ -21,4 +21,11 @@ export class TaskService {
   async create(task: TaskDto): Promise<Task> {
     return await this.taskRepository.create<Task>(task);
   }
+
+  async assignUser(taskId: string, userId: string) {
+    return await this.taskRepository.update(
+      { assignedUserId: userId },
+      { where: { id: taskId } },
+    );
+  }
 }
